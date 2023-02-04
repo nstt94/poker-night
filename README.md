@@ -18,10 +18,10 @@ Download Docker (optional)
 3. sort - sorting hand values in ascending order
 4. time - delay printing to add drama before starting the game and resolving ties
 
-## Flow of the game
+## Flow of the program
 1. Draw a deck of card with symbols = 23456789TJQKA and their ranks = 2,3,4,5,6,7,8,9,10,11,12,13,14
-2. Shuffle the Deck
-3. Distribute 5 cards to each player- Hand1 and Hand2
+2. Shuffle the Deck. One symbol shouldn't occur more than 4 times in a deck.
+3. Distribute 5 cards to each player- Hand1 and Hand2.
 4. Compare both Hands to check which hand has higher combination value as per these rules :-
     Combinations and their Rank in order of value:
     - 1= Four of a kind, like 77377
@@ -59,8 +59,6 @@ Download Docker (optional)
 - Run the following commands to build the Dockerfile and then run the program in a container in an interactive view.
     - docker build --pull --rm -f "Dockerfile" -t pokernight:latest "." 
     - docker run -it --name poker-night pokernight
-
-
 
 ## Disclaimer
 We have not incorporated Suits (heart,spades,ace and diamond)
