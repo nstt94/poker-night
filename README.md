@@ -41,6 +41,11 @@ Download Docker (optional)
 7. Compare rank of Hand1 vs Hand2 and declare winner
 8. In case of a tie, where both hands have same rank value, call resolveTie(). 
 9. Resolving a tie uses sortAndCompare() and findHighestCard()
+    - if frequency {4,1} or {1,4}, then compare rank of card which has frequency 4. the player with higher rank wins. There can't be more than 4 cards of the same suit in a deck in this case.
+    - if frequency {3,2} or {2,3} or {3,1,1} or {1,3,1} or {1,1,3} then compare rank of card which has frequency 3. the player with higher rank wins. Since there can't be more than 3 cards of same suit in a deck in this case.
+    - if frequency {2,2,1} or {2,1,2} or {1,2,2} then compare cards with rank of frequency 2.
+    - if frequency {2,1,1,1} or {1,2,1,1} or {1,1,2,1} or {1,1,1,2} then first compare cards with frequency 2 for higher card. If both ranks are also same, then sort the ranks of cards, compare both hands and decide winner on the basis of higher rank of cards with frequency 1.
+    - if frequency {1,1,1,1,1} then sort the hands on the basis of their ranks and declare winner on the basis of highest rank.
 10. Declare winner and show hands of both players.
 
 ## Building on local system
