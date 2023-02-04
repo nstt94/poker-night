@@ -53,7 +53,7 @@ Download Docker (optional)
 - Open a terminal and navigate to the directory where the Dockerfile is located.
 - Run the following commands to build the Dockerfile and then run the program in a container in an interactive view.
     - docker build --pull --rm -f "Dockerfile" -t pokernight:latest "." 
-    - docker run -it --name container pokernight
+    - docker run -it --name poker-night pokernight
 
 
 

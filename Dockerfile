@@ -1,14 +1,13 @@
 FROM golang:latest
 
+RUN mkdir /app
+
+ADD . /app
 # Set destination for COPY
 WORKDIR /app
 
-# Download Go module
-COPY go.mod .
-RUN go mod download
-
 # Build
-RUN go build -o /pokernight
+RUN go build -o pokernight
 
 # Run
-CMD ["/pokernight"]
+CMD ["/app/pokernight"]

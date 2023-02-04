@@ -24,20 +24,18 @@ const (
 var combinationRank = map[int]string{1: FourOfAKind, 2: FullHouse, 3: Triple, 4: TwoPairs, 5: APair, 6: HighCard}
 
 func main() {
-	fmt.Println("Welcome to Poker Night with LARVIS")
-	fmt.Println("Drumrolls")
+	fmt.Println("*****Welcome to Poker Night with LARVIS*****")
+	fmt.Println("***Drumrolls***")
 	time.Sleep(2 * time.Second)
 	deck := newDeck()
 	//shuffles the deck of cards
 	shuffledDeck := shuffle(deck)
 	//assigns 5 cards to both players from the top of shuffled deck
 	hand1, hand2 := distributeCards(shuffledDeck)
-	//checks which hand has higher combination
+	//checks which hand has higher combination and announces winner
 	compareHands(hand1, hand2)
-	// //Print cards and declare winner
-	fmt.Println("Hand of Player 1 ", hand1)
-	fmt.Println("Hand of Player 2 = ", hand2)
-	//fmt.Println("Final Result = ", finalResult)
+	//Print cards
+	flashcards(hand1, hand2)
 }
 func newDeck() []CardRank {
 	cards := "23456789TJQKA"
@@ -116,15 +114,15 @@ func compareHands(hand1 [5]CardRank, hand2 [5]CardRank) {
 	fmt.Println("Rank of Player 2 = ", r2)
 	time.Sleep(2 * time.Second)
 	if r1 == r2 {
-		fmt.Println("It's a TIE. Let's have a TIE Breaker.")
-		time.Sleep(2 * time.Second)
+		fmt.Println("It's a TIE. \n ---Let's have a TIE Breaker---")
+		time.Sleep(3 * time.Second)
 		resolveTie(hand1, hand2, r1)
 	} else if r1 < r2 {
 		//return ("Hand1 wins")
-		fmt.Println("Hand1 Wins with", combinationRank[r1])
+		fmt.Println("Player1 Wins with", combinationRank[r1])
 	} else if r1 > r2 {
 		//return ("Hand2 wins")
-		fmt.Println("Hand2 wins with", combinationRank[r2])
+		fmt.Println("Player2 wins with", combinationRank[r2])
 	}
 }
 
@@ -219,5 +217,16 @@ func findHighestCard(r int, fMap1 map[string]int, fMap2 map[string]int, hand1 [5
 		fmt.Println("Player 1 wins with a high card of", highestRank1)
 	} else if highestRank2 > highestRank1 {
 		fmt.Println("Player 2 wins with a high card of", highestRank2)
+	}
+}
+func flashcards(hand1 [5]CardRank, hand2 [5]CardRank) {
+	fmt.Println("---Flashing cards of players---")
+	hands := [][5]CardRank{hand1, hand2}
+	for i, hand := range hands {
+		fmt.Printf("Hand of Player %v \n", i+1)
+		for _, card := range hand {
+			fmt.Print(card.symbol)
+		}
+		fmt.Println("")
 	}
 }
